@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodEx Delivery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>FoodEx Delivery</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#cart">Cart</a></li>
+            <li><a href="#orders">My orders</a></li>
+        </ul>
+    </nav>
+
+    <main id = "menu">
+            <h2>Our menu</h2>
+        <section class="menu_grid">
+        <article>
+            <h3>Pizza pepperoni</h3>
+            <img src="img/pizza_pepp.png" alt="Pizza_pepp">
+            <p>Thin crispy dough with rich San Marzano tomato sauce,
+                a layer of melted mozzarella, and fresh basil leaves.</p>
+            <strong>Price: 199 UAH</strong>
+        </article>
+        <article>
+            <h3>Pizza margherita</h3>
+            <img src="img/pizza_marg.png" alt="Pizza_marg">
+            <p>Traditional Italian pizza with a thin crust.
+                The most popular choice in the world thanks to the combination
+                of juicy tomato sauce and melted mozzarella with hints of basil.</p>
+            <strong>Price: 239 UAH</strong>
+        </article>
+        <article>
+            <h3>Baked potatoes</h3>
+            <img src="img/backed_potatoes.png" alt="Backed_pot">
+            <p>Crispy outside, melt-in-your-mouth inside.
+                Choose your toppings, mix it up, and enjoy the perfect meal.</p>
+            <strong>Price: 149 UAH</strong>
+        </article>
+            </section>
+    </main>
+
+    <section id="cart">
+        <h2>Cart</h2>
+        <ul class="cart_list">
+            <li class="cart_header" aria-hidden="true">
+                <span>Item</span> <span>Price</span> <span>Qty</span> <span>Sub</span>
+            </li>
+
+            <li class="cart_row">
+                <span>Pizza Pepperoni</span>
+                <span>199 UAH</span>
+                <input type="number" value="1" min="1">
+                <span>199 UAH</span>
+            </li>
+        </ul>
+
+        <p class="cart_total">
+            <strong>Total: 199 UAH</strong>
+        </p>
+    </section>
+
+    <section id="orders">
+        <h2>My orders</h2>
+        <ul class="orders_list">
+            <li class="order_item">
+                <article>
+                    <header>
+                        <strong>Order #1024</strong>
+                        <time datetime="2026-03-02">March 2, 2026</time>
+                    </header>
+                    <p>Pizza Margherita x2, Baked Potatoes x1</p>
+                    <footer>
+                        <span>Status: <mark>Delivered</mark></span>
+                        <strong>Total: 480 UAH</strong>
+                    </footer>
+                </article>
+            </li>
+        </ul>
+    </section>
+
+    <footer>
+        <h2>Contact us</h2>
+    <p>FoodEx Delivery</p>
+    <p>+380 99 999 99 99</p>
+    <p>Foodex@gmail.com</p>
+</footer>
+</body>
+
+</html>
+
+
+<!--1. Розділи: "Меню", "Кошик", "Мої замовлення". "Меню" містить список доступних-->
+<!--страв із фото, ціною та коротким описом. "Кошик" дозволяє змінювати кількість-->
+<!--товарів та переглядати підсумкову вартість. "Мої замовлення" містить історію-->
+<!--покупок.-->
+<!--2. Використати CSS Grid для відображення страв у сітці в розділах "Меню", "Кошик" та-->
+<!--"Мої замовлення".-->
