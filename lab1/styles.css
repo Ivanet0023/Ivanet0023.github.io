@@ -133,6 +133,7 @@ article h3 {
     padding: 20px;
     border-radius: 8px;
     border: 1px solid #ddd;
+    margin: 20px;
 }
 
 @media (max-width: 600px) {
