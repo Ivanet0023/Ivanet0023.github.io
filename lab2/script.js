@@ -1,10 +1,11 @@
-const menuItems = [
-    { id: 1, name: "Pizza Pepperoni", price: 199, img: "img/pizza_pepp.png", desc: "Thin crispy dough with San Marzano sauce and pepperoni." },
-    { id: 2, name: "Pizza Margherita", price: 239, img: "img/pizza_marg.png", desc: "Traditional Italian pizza with mozzarella and basil." },
-    { id: 3, name: "Baked Potatoes", price: 149, img: "img/backed_potatoes.png", desc: "Crispy outside, melt-in-your-mouth inside." },
-    { id: 4, name: "French Fries", price: 119, img: "img/french_fries.png", desc: "Golden and crispy on the outside while maintaining a fluffy, soft interior" }
-];
+let  menuItems = [];
 
+async function loadMenu() {
+        const response = await fetch('menu.json');
+        menuItems = await response.json();
+        renderMenu();
+}
+// дописати try catch
 let cart = [];
 let orders = [];
 
@@ -185,7 +186,7 @@ document.getElementById('checkout_btn').onclick = function() {
 };
 
 window.onload = () => {
-    renderMenu();
+    loadMenu();
     renderCart();
     renderOrders();
 };
