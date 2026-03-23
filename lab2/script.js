@@ -61,6 +61,12 @@ function renderCart() {
     const cartList = document.querySelector('.cart_list');
     if (!cartList) return;
 
+    if (cart.length === 0) return (
+        cartList.innerHTML = `
+            <div class="no-items">
+                <p>Your cart is empty. Add some items to get started!</p>
+            </div>`
+    )
     cartList.innerHTML = `
         <li class="cart_header">
             <span>Item</span><span>Price</span><span>Qty</span><span>Sub</span>
@@ -93,29 +99,35 @@ function renderOrders() {
     const ordersList = document.querySelector('.orders_list');
     if (!ordersList) return;
 
-    ordersList.innerHTML = '';
-    let i = 0;
-    while (i < orders.length) {
-        const order = orders[i];
-        ordersList.innerHTML += `
-            <li class="order_item">
-                <article>
-                    <header style="background: #34495e; color: white; padding: 10px; border-radius: 5px 5px 0 0;">
-                        <strong>Order #${order.id}</strong>
-                        <span style="float: right;">${order.date}</span>
-                    </header>
-                    <p style="padding: 10px;">${order.items}</p>
-                    <footer style="background: #2c3e50; color: white; padding: 15px; border-radius: 0 0 5px 5px;">
-                        <span>Status: <mark style="padding: 2px 5px; border-radius: 3px;">${order.status}</mark></span>
-                        <strong style="float: right;">Total: ${order.total} UAH</strong>
-                    </footer>
-                </article>
-            </li>`;
-        i++;
+    if (orders.length === 0) {
+        ordersList.innerHTML = `
+            <div class="no-orders">
+                <p>No orders yet. Your delicious food history will appear here!</p>
+            </div>`;
+    } else {
+        ordersList.innerHTML = '';
+        let i = 0;
+        while (i < orders.length) {
+            const order = orders[i];
+            ordersList.innerHTML += `
+                <li class="order_item">
+                    <article>
+                        <header style="background: #34495e; color: white; padding: 10px; border-radius: 5px 5px 0 0;">
+                            <strong>Order #${order.id}</strong>
+                            <span style="float: right;">${order.date}</span>
+                        </header>
+                        <p style="padding: 10px;">${order.items}</p>
+                        <footer style="background: #2c3e50; color: white; padding: 15px; border-radius: 0 0 5px 5px;">
+                            <span>Status: <mark style="padding: 2px 5px; border-radius: 3px;">${order.status}</mark></span>
+                            <strong style="float: right;">Total: ${order.total} UAH</strong>
+                        </footer>
+                    </article>
+                </li>`;
+            i++;
+        }
     }
 }
 
-// Додаємо другий параметр orderId
 function startDeliveryTimer(minutes, orderId) {
     const ordersSection = document.getElementById('orders');
     const timerDisplay = document.createElement('div');
