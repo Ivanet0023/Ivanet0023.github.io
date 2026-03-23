@@ -101,7 +101,7 @@ function renderOrders() {
             <li class="order_item">
                 <article>
                     <header style="background: #34495e; color: white; padding: 10px; border-radius: 5px 5px 0 0;">
-                        <strong>Order #${order.id}</strong> 
+                        <strong>Order #${order.id}</strong>
                         <span style="float: right;">${order.date}</span>
                     </header>
                     <p style="padding: 10px;">${order.items}</p>
@@ -165,7 +165,6 @@ document.getElementById('checkout_btn').onclick = function() {
     window.location.hash = "orders";
 };
 
-// Запуск при завантаженні сторінки
 window.onload = () => {
     renderMenu();
     renderCart();
