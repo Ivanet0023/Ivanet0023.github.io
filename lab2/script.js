@@ -115,7 +115,8 @@ function renderOrders() {
     }
 }
 
-function startDeliveryTimer(minutes) {
+// Додаємо другий параметр orderId
+function startDeliveryTimer(minutes, orderId) {
     const ordersSection = document.getElementById('orders');
     const timerDisplay = document.createElement('div');
     timerDisplay.className = "delivery-alert";
@@ -133,6 +134,12 @@ function startDeliveryTimer(minutes) {
             clearInterval(countdown);
             timerDisplay.innerHTML = "Your order has been delivered!";
             timerDisplay.style.background = "#27ae60";
+
+            const deliveredOrder = orders.find(o => o.id === orderId);
+            if (deliveredOrder) {
+                deliveredOrder.status = "Done";
+                renderOrders();
+            }
         }
         seconds--;
     }, 1000);
@@ -160,7 +167,7 @@ document.getElementById('checkout_btn').onclick = function() {
 
     renderCart();
     renderOrders();
-    startDeliveryTimer(1);
+    startDeliveryTimer(1, newOrder.id);
 
     window.location.hash = "orders";
 };
