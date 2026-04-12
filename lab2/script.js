@@ -13,7 +13,6 @@ async function loadMenu() {
         console.error("An error occurred: ", error);
     }
 }
-// test
 let cart = [];
 let orders = [];
 
