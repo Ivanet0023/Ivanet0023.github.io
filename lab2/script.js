@@ -13,7 +13,7 @@ async function loadMenu() {
         console.error("An error occurred: ", error);
     }
 }
-// дописати try catch
+// test
 let cart = [];
 let orders = [];
 
