@@ -4,13 +4,13 @@ async function loadMenu() {
     try {
         const response = await fetch('menu.json');
         if (!response.ok) {
-            throw new Error(`Не вдалося завантажити файл: статус ${response.status}`);
+            throw new Error(`Failed to load ${response.status}`);
         }
         menuItems = await response.json();
         renderMenu();
 
     } catch (error) {
-        console.error("Критична помилка при завантаженні меню:", error);
+        console.error("An error occurred: ", error);
     }
 }
 // дописати try catch
