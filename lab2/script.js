@@ -1,9 +1,17 @@
 let  menuItems = [];
 
 async function loadMenu() {
+    try {
         const response = await fetch('menu.json');
+        if (!response.ok) {
+            throw new Error(`Не вдалося завантажити файл: статус ${response.status}`);
+        }
         menuItems = await response.json();
         renderMenu();
+
+    } catch (error) {
+        console.error("Критична помилка при завантаженні меню:", error);
+    }
 }
 // дописати try catch
 let cart = [];

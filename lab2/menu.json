@@ -26,7 +26,7 @@
   { "id": 5,
     "name": "Chicken Wings",
     "price": 289,
-    "img": "",
+    "img": "img/chicken_wings.png",
     "desc": "Crispy fried chicken wings served with a side of vegetables."
   }
 ]
