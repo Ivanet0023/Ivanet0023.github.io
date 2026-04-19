@@ -8,7 +8,6 @@ function App() {
     const [cart, setCart] = useState([]);
     const [orders, setOrders] = useState([]);
 
-    // Логіка додавання в кошик (з урахуванням кількості)
     const addToCart = (product) => {
         setCart(prevCart => {
             const existingItem = prevCart.find(item => item.id === product.id);
@@ -21,16 +20,14 @@ function App() {
         });
     };
 
-    // Зміна кількості (+1 або -1)
     const updateQuantity = (id, delta) => {
         setCart(prevCart =>
             prevCart.map(item =>
                 item.id === id ? { ...item, quantity: item.quantity + delta } : item
-            ).filter(item => item.quantity > 0) // Видаляємо, якщо кількість 0
+            ).filter(item => item.quantity > 0)
         );
     };
 
-    // Оформлення замовлення
     const placeOrder = () => {
         if (cart.length === 0) {
             alert("Your cart is empty!");
@@ -47,7 +44,7 @@ function App() {
         };
 
         setOrders([...orders, newOrder]);
-        setCart([]); // Очищуємо кошик
+        setCart([]);
         alert("Order placed successfully!");
     };
 
@@ -86,7 +83,6 @@ function App() {
     );
 }
 
-// Сторінка Меню (Варіант 12: Фільтрація)
 function MenuPage({ onAddToCart }) {
     const [category, setCategory] = useState('All');
     const filteredMenu = category === 'All' ? menuData : menuData.filter(item => item.category === category);
@@ -95,7 +91,7 @@ function MenuPage({ onAddToCart }) {
         <main id="menu">
             <h2>Our menu</h2>
             <div className="filter-bar">
-                {['All', 'Pizza', 'Sides', 'Drinks'].map(cat => (
+                {['All', 'Pizza', 'Potato', 'Meat'].map(cat => (
                     <button key={cat} className={category === cat ? 'active' : ''} onClick={() => setCategory(cat)}>
                         {cat}
                     </button>
@@ -110,7 +106,6 @@ function MenuPage({ onAddToCart }) {
     );
 }
 
-// СТОРІНКА КОШИКА (Відновлюємо вашу таблицю)
 function CartPage({ cart, updateQuantity, onPlaceOrder }) {
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 

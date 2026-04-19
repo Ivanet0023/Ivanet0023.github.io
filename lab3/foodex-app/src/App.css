@@ -86,7 +86,7 @@ article img {
   font-weight: bold;
 }
 
-.btn-added { background-color: #27ae60; }
+.btn-added { background-color: #27ae60 !important; }
 
 .orders_list {
   list-style: none;
@@ -113,6 +113,60 @@ article img {
 
 .add-to-cart-btn:hover {
   background-color: #34495e;
+}
+
+.filter-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-bar button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: white;
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.filter-bar button:hover {
+  background: #eef2f5;
+}
+
+.filter-bar button.active {
+  background: #2c3e50;
+  color: white;
+}
+
+.qty_controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.qty_btn {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.qty_btn:hover {
+  background: #34495e;
+}
+
+.qty_val {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 footer {
