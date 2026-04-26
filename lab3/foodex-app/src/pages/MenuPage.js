@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import DishCard from '../components/DishCard';
 
 export default function MenuPage({ onAddToCart }) {
-    const [menuData, setMenuData] = useState([]); // Стан для зберігання завантаженого меню
+    const [menuData, setMenuData] = useState([]);
     const [category, setCategory] = useState('All');
-    const [isLoading, setIsLoading] = useState(true); // Стан завантаження
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/menu.json')
+        fetch('menu.json')
             .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 return response.json();
             })
             .then(data => {
