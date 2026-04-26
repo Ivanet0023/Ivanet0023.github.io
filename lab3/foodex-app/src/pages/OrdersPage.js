@@ -1,9 +1,17 @@
 import React from 'react';
 
-export default function OrdersPage({ orders }) {
+export default function OrdersPage({ orders, onClear }) {
     return (
         <section id="orders">
-            <h2>My orders</h2>
+            <div className="orders-header">
+                <h2>My orders</h2>
+                {orders.length > 0 && (
+                    <button className="btn-clear" onClick={onClear}>
+                        Clear History
+                    </button>
+                )}
+            </div>
+
             <div className="orders_list">
                 {orders.length === 0 ? (
                     <p>No orders yet.</p>

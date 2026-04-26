@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 
@@ -9,8 +9,23 @@ import OrdersPage from './pages/OrdersPage';
 import Footer from './components/Footer';
 
 function App() {
-    const [cart, setCart] = useState([]);
-    const [orders, setOrders] = useState([]);
+    const [cart, setCart] = useState(() => {
+        const savedCart = localStorage.getItem('foodex_cart');
+        return savedCart ? JSON.parse(savedCart) : [];
+    });
+
+    const [orders, setOrders] = useState(() => {
+        const savedOrders = localStorage.getItem('foodex_orders');
+        return savedOrders ? JSON.parse(savedOrders) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('foodex_cart', JSON.stringify(cart));
+    }, [cart]);
+
+    useEffect(() => {
+        localStorage.setItem('foodex_orders', JSON.stringify(orders));
+    }, [orders]);
 
     const addToCart = (product) => {
         setCart(prevCart => {
@@ -33,10 +48,7 @@ function App() {
     };
 
     const placeOrder = () => {
-        if (cart.length === 0) {
-            alert("Your cart is empty!");
-            return;
-        }
+        if (cart.length === 0) return;
 
         const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
         const newOrder = {
@@ -52,23 +64,26 @@ function App() {
         alert("Order placed successfully!");
     };
 
+    const clearAllData = () => {
+        if (window.confirm("You sure to clear all data?")) {
+            setCart([]);          // Очищуємо стейт кошика
+            setOrders([]);        // Очищуємо стейт замовлень
+            localStorage.clear(); // Повністю чистимо LocalStorage
+            alert("Data is deleted");
+        }
+    };
+
     return (
         <Router>
             <div className="App">
                 <Header cartCount={cart.length} />
-
                 <Routes>
                     <Route path="/" element={<MenuPage onAddToCart={addToCart} />} />
                     <Route path="/cart" element={
-                        <CartPage
-                            cart={cart}
-                            updateQuantity={updateQuantity}
-                            onPlaceOrder={placeOrder}
-                        />
+                        <CartPage cart={cart} updateQuantity={updateQuantity} onPlaceOrder={placeOrder} />
                     } />
-                    <Route path="/orders" element={<OrdersPage orders={orders} />} />
+                    <Route path="/orders" element={<OrdersPage orders={orders} onClear={clearAllData} />} />
                 </Routes>
-
                 <Footer />
             </div>
         </Router>

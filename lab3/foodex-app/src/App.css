@@ -169,6 +169,37 @@ article img {
   font-size: 16px;
 }
 
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  margin-bottom: 20px;
+}
+
+.btn-clear {
+  padding: 8px 18px;
+  background-color: #e74c3c; /* Червоний колір */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.btn-clear:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.btn-clear:active {
+  transform: translateY(0);
+}
+
 footer {
   background-color: #2c3e50;
   color: white;
