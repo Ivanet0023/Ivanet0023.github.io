@@ -151,6 +151,17 @@ app.delete('/api/orders/:id', authenticateToken, async (req, res) => {
     }
 });
 
+// Menu Routes
+app.get('/api/menu', async (req, res) => {
+    try {
+        const menu = await prisma.dish.findMany();
+        res.json(menu);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Помилка отримання меню' });
+    }
+});
+
 // Host static React files (for deployment)
 const clientBuildPath = path.join(__dirname, '../foodex-app/build');
 app.use(express.static(clientBuildPath));
