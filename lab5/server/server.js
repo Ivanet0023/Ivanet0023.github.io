@@ -5,9 +5,13 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 const { PrismaClient } = require('@prisma/client');
+const { Pool } = require('pg');
+const { PrismaPg } = require('@prisma/adapter-pg');
 const { authenticateToken } = require('./middleware/auth');
 
-const prisma = new PrismaClient();
+const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 const app = express();
 
 app.use(cors());
@@ -151,8 +155,12 @@ app.delete('/api/orders/:id', authenticateToken, async (req, res) => {
 const clientBuildPath = path.join(__dirname, '../foodex-app/build');
 app.use(express.static(clientBuildPath));
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(clientBuildPath, 'index.html'));
+app.use((req, res, next) => {
+    if (req.method === 'GET' && !req.path.startsWith('/api')) {
+        res.sendFile(path.join(clientBuildPath, 'index.html'));
+    } else {
+        next();
+    }
 });
 
 const PORT = process.env.PORT || 5000;
