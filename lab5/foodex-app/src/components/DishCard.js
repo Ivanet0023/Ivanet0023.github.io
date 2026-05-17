@@ -16,7 +16,7 @@ function DishCard({ item, onAddToCart }) {
         <article className="dish-card">
             <img src={item.img} alt={item.name} />
             <h3>{item.name}</h3>
-            <p>{item.desc}</p>
+            <p>{item.description}</p>
             <strong>{item.price} UAH</strong><br/><br/>
 
             <button
