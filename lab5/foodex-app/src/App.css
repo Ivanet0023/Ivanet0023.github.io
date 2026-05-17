@@ -1,0 +1,291 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  margin: 0;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem 5%;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a:hover { color: #87a0c9; }
+
+.menu_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 40px 5%;
+}
+
+article {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+article:hover { transform: translateY(-5px); }
+
+article img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.cart_list {
+  border-radius: 8px;
+  max-width: 80%;
+  margin: 0 auto;
+  background: white;
+  list-style: none;
+  padding: 0;
+  border: 1px solid #ddd;
+}
+
+.cart_header, .cart_row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  padding: 10px;
+  align-items: center;
+}
+
+.cart_header { background: #2c3e50; color: white; }
+.cart_row { border-bottom: 1px solid #eee; }
+
+#checkout_btn {
+  padding: 10px 30px;
+  background: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.btn-added { background-color: #27ae60 !important; }
+
+.orders_list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 5%;
+}
+
+.order_item article {
+  border: 1px solid #ddd;
+  margin: 10px;
+}
+
+.add-to-cart-btn {
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+  background-color: #34495e;
+}
+
+.filter-bar {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-bar button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: white;
+  color: #2c3e50;
+  border: 2px solid #2c3e50;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.filter-bar button:hover {
+  background: #eef2f5;
+}
+
+.filter-bar button.active {
+  background: #2c3e50;
+  color: white;
+}
+
+.qty_controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.qty_btn {
+  background: #2c3e50;
+  color: white;
+  border: none;
+  padding: 5px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+.qty_btn:hover {
+  background: #34495e;
+}
+
+.qty_val {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.orders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  margin-bottom: 20px;
+}
+
+.btn-clear {
+  padding: 8px 18px;
+  background-color: #e74c3c; /* Червоний колір */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(231, 76, 60, 0.2);
+}
+
+.btn-clear:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(231, 76, 60, 0.3);
+}
+
+.btn-clear:active {
+  transform: translateY(0);
+}
+
+/* Контейнер сторінки */
+.orders-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Сітка та картки */
+.orders-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  border-left: 5px solid #2c3e50; /* Темна лінія як у вашому хедері */
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Хедер картки */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.order-date {
+  font-weight: bold;
+  color: #555;
+}
+
+/* Статуси */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85em;
+  background: #f0f0f0;
+  color: #666;
+}
+
+.status-badge.in-progress {
+  background: #e1f5fe;
+  color: #0288d1;
+}
+
+/* Кнопка видалення */
+.delete-btn {
+  margin-top: 15px;
+  background: #ff4757;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background 0.3s;
+}
+
+.delete-btn:hover {
+  background: #ff6b81;
+}
+
+.empty-message {
+  text-align: center;
+  color: #999;
+  padding: 50px;
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+  margin-top: 40px;
+}
