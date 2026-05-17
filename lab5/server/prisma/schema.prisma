@@ -30,5 +30,5 @@ model Dish {
   price       Float
   category    String
   img         String
-  description String?
+  description String
 }
