@@ -15,17 +15,17 @@ model User {
 }
 
 model Order {
-  id      Int      @id @default(autoincrement())
-  userId  Int
-  date    String
-  total   Float
-  status  String
-  items   Json
-  user    User     @relation(fields: [userId], references: [id])
+  id     Int    @id @default(autoincrement())
+  userId Int
+  date   String
+  total  Float
+  status String
+  items  Json
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Dish {
-  id          Int      @id @default(autoincrement())
+  id          Int    @id @default(autoincrement())
   name        String
   price       Float
   category    String

@@ -9,6 +9,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env["DATABASE_URL"],
+    url: "postgresql://foodex_app_user:CT7NeuOkhzWPuPx24AUHIQS0tth82InI@dpg-d84slcojs32c73a2jrvg-a.virginia-postgres.render.com/foodex_app?sslmode=require",
   },
 });
